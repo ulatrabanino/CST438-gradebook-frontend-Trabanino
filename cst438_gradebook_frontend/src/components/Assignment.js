@@ -28,7 +28,7 @@ class Assignment extends React.Component {
     fetch(`${SERVER_URL}/gradebook`, 
       {  
         method: 'GET', 
-        headers: { 'X-XSRF-TOKEN': token }
+        headers: { 'X-XSRF-TOKEN': token, credentials: 'include' }
       } )
     .then((response) => response.json()) 
     .then((responseData) => { 
@@ -83,7 +83,9 @@ class Assignment extends React.Component {
                     variant="outlined" color="primary" disabled={this.state.assignments.length===0}  style={{margin: 10}}>
               Grade
             </Button>
-            <ToastContainer autoClose={1500} /> 
+            <Button component={Link} to={{pathname:'/assignment/add' }} variant="outlined" color="primary" style={{margin: 10}}>
+              Add Assignment
+             </Button>
           </div>
       )
   }
